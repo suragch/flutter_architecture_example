@@ -6,7 +6,7 @@ class CounterViewModel extends ChangeNotifier {
   int _counter = 0;
   int get counter => _counter;
 
-  StorageService _storageService = locator<StorageService>();
+  StorageService _storageService = getIt<StorageService>();
 
   Future loadData() async {
     _counter = await _storageService.getCounterValue();

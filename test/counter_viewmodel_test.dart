@@ -9,7 +9,7 @@ class MockStorageService extends Mock implements StorageService {}
 void main() {
   setUpAll(() {
     setupServiceLocator();
-    locator.allowReassignment = true;
+    getIt.allowReassignment = true;
   });
 
   test(
@@ -20,7 +20,7 @@ void main() {
       when(mockStorageService.getCounterValue()).thenAnswer(
         (_) => Future.value(0),
       );
-      locator.registerSingleton<StorageService>(mockStorageService);
+      getIt.registerSingleton<StorageService>(mockStorageService);
 
       // increment counter
       final viewModel = CounterViewModel();

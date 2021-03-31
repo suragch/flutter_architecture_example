@@ -5,7 +5,7 @@ import 'storage_service.dart';
 class StorageServiceWeb extends StorageService {
   @override
   Future<int> getCounterValue() async {
-    String url = 'https://example.com/counter';
+    final url = Uri.parse('https://example.com/counter');
     Response response = await get(url);
     String json = response.body;
     Map<String, dynamic> map = jsonDecode(json);
@@ -15,7 +15,7 @@ class StorageServiceWeb extends StorageService {
 
   @override
   Future<void> saveCounterValue(int value) async {
-    String url = 'https://example.com/counter';
+    final url = Uri.parse('https://example.com/counter');
     Map<String, String> headers = {'Content-type': 'application/json'};
     String json = '{"counter": $value}';
     await post(url, headers: headers, body: json);
